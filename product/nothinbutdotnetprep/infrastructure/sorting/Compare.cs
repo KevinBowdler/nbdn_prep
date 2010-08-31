@@ -2,7 +2,7 @@ using System;
 
 namespace nothinbutdotnetprep.infrastructure.sorting
 {
-    public static class Sort<ItemToSort>
+    public static class Compare<ItemToSort>
     {
         public static ComparerBuilder<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> property_accessor)
             where PropertyType : IComparable<PropertyType>

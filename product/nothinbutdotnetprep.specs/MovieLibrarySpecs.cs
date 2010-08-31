@@ -291,7 +291,7 @@ namespace nothinbutdotnetprep.specs
 
             It should_be_able_to_sort_all_movies_by_title_descending = () =>
             {
-                var comparer = Sort<Movie>.by_descending(x => x.title);
+                var comparer = Compare<Movie>.by_descending(x => x.title);
                 var results = sut.all_movies().sort_using(comparer);
 
                 results.ShouldContainOnlyInOrder(theres_something_about_mary, the_ring, shrek,
@@ -301,7 +301,7 @@ namespace nothinbutdotnetprep.specs
 
             It should_be_able_to_sort_all_movies_by_title_ascending = () =>
             {
-                var comparer = Sort<Movie>.by(x => x.title);
+                var comparer = Compare<Movie>.by(x => x.title);
                 var results = sut.all_movies().sort_using(comparer);
 
                 results.ShouldContainOnlyInOrder(a_bugs_life, cars, indiana_jones_and_the_temple_of_doom,
@@ -311,7 +311,7 @@ namespace nothinbutdotnetprep.specs
 
             It should_be_able_to_sort_all_movies_by_date_published_descending = () =>
             {
-                var comparer = Sort<Movie>.by_descending(x => x.date_published);
+                var comparer = Compare<Movie>.by_descending(x => x.date_published);
                 var results = sut.all_movies().sort_using(comparer);
                 results.ShouldContainOnlyInOrder(theres_something_about_mary, shrek, the_ring, cars,
                                                  pirates_of_the_carribean, a_bugs_life,
@@ -320,7 +320,7 @@ namespace nothinbutdotnetprep.specs
 
             It should_be_able_to_sort_all_movies_by_date_published_ascending = () =>
             {
-                var comparer = Sort<Movie>.by(x => x.date_published);
+                var comparer = Compare<Movie>.by(x => x.date_published);
                 var results = sut.all_movies().sort_using(comparer);
 
                 results.ShouldContainOnlyInOrder(indiana_jones_and_the_temple_of_doom, a_bugs_life,

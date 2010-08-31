@@ -7,7 +7,7 @@ namespace nothinbutdotnetprep.infrastructure.sorting
     {
         public static OrderedEnumerable<T> order_by<T, PropertyType>(this IEnumerable<T> items, Func<T, PropertyType> func, params PropertyType[] sortOrder)
         {
-            return new OrderedEnumerable<T>(items, Sort<T>.by(func, sortOrder));
+            return new OrderedEnumerable<T>(items, Compare<T>.by(func, sortOrder));
         }
 
     }
