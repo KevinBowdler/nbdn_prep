@@ -3,31 +3,31 @@ using System.Collections.Generic;
 
 namespace nothinbutdotnetprep.infrastructure.sorting
 {
-    public class ComparerBuilder<T> : IComparer<T>
+    public class ComparerBuilder<ItemToSort> : IComparer<ItemToSort>
     {
-        IComparer<T> current_comparer;
+        IComparer<ItemToSort> current_comparer;
 
-        public ComparerBuilder(IComparer<T> currentComparer)
+        public ComparerBuilder(IComparer<ItemToSort> current_comparer)
         {
-            this.current_comparer = currentComparer;
+            this.current_comparer = current_comparer;
         }
 
-        public int Compare(T x, T y)
+        public int Compare(ItemToSort x, ItemToSort y)
         {
             return current_comparer.Compare(x, y);
         }
 
-        public ComparerBuilder<T> then_by<PropertyType>(Func<T, PropertyType> func) where PropertyType : IComparable<PropertyType>
+        public ComparerBuilder<ItemToSort> then_by_descending<PropertyType>(Func<ItemToSort, PropertyType> func) where PropertyType : IComparable<PropertyType>
         {
-            var second_criteria = new PropertyComparer<T, PropertyType>(func, new ComparableComparer<PropertyType>());
-            current_comparer = new ChainedComparer<T>(current_comparer, second_criteria);
-            return this;
+           return new ComparerBuilder<ItemToSort>(new ChainedComparer<ItemToSort>(current_comparer, 
+               new ReverseComparer<ItemToSort>(new PropertyComparer<ItemToSort, PropertyType>(func, new ComparableComparer<PropertyType>()))));
         }
 
-        public ComparerBuilder<T> reverse()
+        public ComparerBuilder<ItemToSort> then_by<PropertyType>(Func<ItemToSort, PropertyType> func) where PropertyType : IComparable<PropertyType>
         {
-            current_comparer = new ReverseComparer<T>(current_comparer);
-            return this;
+           return new ComparerBuilder<ItemToSort>(new ChainedComparer<ItemToSort>(current_comparer, 
+               new PropertyComparer<ItemToSort, PropertyType>(func, new ComparableComparer<PropertyType>())));
         }
+
     }
 }
