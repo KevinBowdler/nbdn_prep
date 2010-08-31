@@ -89,6 +89,7 @@
     <Compile Include="infrastructure\sorting\ComparablePropertyComparer.cs" />
     <Compile Include="infrastructure\sorting\ComparerBuilder.cs" />
     <Compile Include="infrastructure\sorting\NormalSortDirection.cs" />
+    <Compile Include="infrastructure\sorting\OrderedEnumerable.cs" />
     <Compile Include="infrastructure\sorting\RankingComparer.cs" />
     <Compile Include="infrastructure\sorting\ReverseComparer.cs" />
     <Compile Include="infrastructure\sorting\ReverseSortDirection.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="infrastructure\sorting\PropertyComparer.cs" />
     <Compile Include="infrastructure\sorting\SortDirection.cs" />
     <Compile Include="infrastructure\sorting\SortDirections.cs" />
+    <Compile Include="infrastructure\sorting\SortingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
